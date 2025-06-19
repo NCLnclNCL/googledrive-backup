@@ -36,3 +36,16 @@ jobs:
         name: google-drive-files
         path: gdrive-files.zip
         retention-days: 1
+    - name: Upload Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+        
+          ${{ github.workspace }}/gdrive-files.zip
+        name: backup_gg
+
+        body: |
+          Url: ${{ github.event.inputs.folder_url }}
+          
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
